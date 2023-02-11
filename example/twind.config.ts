@@ -1,12 +1,12 @@
-import { Options } from "twind_fresh_plugin/twind.ts";
-import { defineConfig } from "twind";
+import { Options } from "fresh-twind-plugin";
+import { defineConfig } from "@twind/core";
 // twind preset
-import presetAutoPrefix from "twind-preset-autoprefix";
-import presetTailWind from "twind-preset-tailwind";
+import presetTailwindForms from "@twind/preset-tailwind-forms";
+import presetTypography from "@twind/preset-typography";
 
 export default {
-  ...defineConfig({
-    presets: [presetAutoPrefix, presetTailWind],
-  }),
+  ...[defineConfig({
+    presets: [presetTailwindForms(), presetTypography()],
+  })],
   selfURL: import.meta.url,
 } as Options;

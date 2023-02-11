@@ -7,7 +7,7 @@
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 
-import twindPlugin from "twind_fresh_plugin/twind.ts";
+import twindPlugin from "fresh-twind-plugin";
 import twindConfig from "./twind.config.ts";
 
 await start(manifest, { plugins: [twindPlugin(twindConfig)] });
