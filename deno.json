@@ -1,4 +1,11 @@
 {
-  "tasks": {},
-  "importMap": "./import_map.json"
+  "tasks": {
+    "cache": "deno cache --reload ./twind.ts"
+  },
+  "importMap": "./import_map.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"]
+  }
 }
