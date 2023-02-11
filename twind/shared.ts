@@ -2,7 +2,15 @@
 // https://github.com/denoland/fresh/blob/main/plugins/twind/shared.ts
 //
 import { JSX, options as preactOptions, VNode } from "preact";
-import { setup as twSetup, Sheet, tw, TwindUserConfig } from "twind";
+import {
+  defineConfig,
+  setup as twSetup,
+  Sheet,
+  tw,
+  TwindUserConfig,
+} from "@twind/core";
+import presetAutoPrefix from "@twind/preset-autoprefix";
+import presetTailWind from "@twind/preset-tailwind";
 
 export const STYLE_ELEMENT_ID = "__FRSH_TWIND";
 
@@ -29,7 +37,14 @@ declare module "preact" {
  * @param sheet
  */
 export function setup(options: Options, sheet: Sheet) {
-  twSetup(options, sheet);
+  const { selfURL: _, ...twConfig } = options;
+
+  const config = defineConfig({
+    presets: [presetAutoPrefix(), presetTailWind()],
+    ...[twConfig as TwindUserConfig],
+  });
+
+  twSetup(config, sheet);
 
   const originalHook = preactOptions.vnode;
   // deno-lint-ignore no-explicit-any

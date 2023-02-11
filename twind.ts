@@ -2,8 +2,8 @@
 // https://github.com/denoland/fresh/blob/main/plugins/twind.ts
 //
 import { Plugin } from "$fresh/server.ts";
-import { STYLE_ELEMENT_ID, Options, setup } from "./twind/shared.ts";
-import { stringify, virtual } from "twind";
+import { Options, setup, STYLE_ELEMENT_ID } from "./twind/shared.ts";
+import { stringify, virtual } from "@twind/core";
 export type { Options };
 
 /**

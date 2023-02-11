@@ -1,10 +1,8 @@
 // Original Code
 // https://github.com/denoland/fresh/blob/main/plugins/twind/main.ts
 //
-import { cssom, stringify, Sheet, SheetRule } from "twind";
-import { STYLE_ELEMENT_ID, Options, setup } from "./shared.ts";
-
-type State = string[];
+import { cssom, Sheet, SheetRule, stringify } from "@twind/core";
+import { Options, setup, STYLE_ELEMENT_ID } from "./shared.ts";
 
 /**
  * Setup a twind dynamically inserted in Islands.
@@ -24,7 +22,7 @@ export function hydrate(options: Options) {
 function resume(
   this: Sheet,
   addClassName: (className: string) => void,
-  insert: (cssText: string, rule: SheetRule) => void
+  insert: (cssText: string, rule: SheetRule) => void,
 ) {
   // hydration from SSR sheet
   const textContent = stringify(this.target);
@@ -62,13 +60,13 @@ function resume(
             // grep the cssText from the previous match end up to this match start
             textContent.slice(
               lastMatch.index + lastMatch[0].length,
-              match?.index
+              match?.index,
             ),
             {
               p: parseInt(lastMatch[1], 36),
               o: parseInt(lastMatch[2], 36) / 2,
               n: lastMatch[3],
-            }
+            },
           );
         }
 
